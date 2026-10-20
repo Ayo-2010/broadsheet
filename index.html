@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Daily Ledger</title>
+<meta name="description" content="A working broadsheet newspaper front page with editions, section filters, search, article reader and saved clippings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="pressroom">
+  <div class="paper" id="paper">
+    <header class="masthead">
+      <div class="topline">
+        <span id="volume">Vol. CXVII · No. 42</span>
+        <span class="topline-center">City Edition · Printed this morning</span>
+        <span id="weatherTop">Fair, 14°C</span>
+        <span class="topline-price">Price 25¢</span>
+      </div>
+
+      <div class="nameplate">
+        <div class="ear left" aria-hidden="true">
+          <span>Established</span>
+          <strong>1908</strong>
+          <span>All the news</span>
+        </div>
+        <div class="title-wrap">
+          <p class="above-title">Morning Edition</p>
+          <h1>The Daily Ledger</h1>
+          <p class="below-title">Independent · Printed every morning · <span id="issueLine">No. 42</span></p>
+        </div>
+        <div class="ear right" aria-hidden="true">
+          <span>Late</span>
+          <strong>Edition</strong>
+          <span>25 cents</span>
+        </div>
+      </div>
+
+      <div class="dateline">
+        <p id="fullDate">Tuesday, October 20, 2026</p>
+        <p class="dateline-center">“A city is a story told in columns.”</p>
+        <p>Today’s weather: <span id="weatherInline">Fair, 14°C</span></p>
+      </div>
+    </header>
+
+    <div class="ticker" id="ticker" aria-label="Breaking news">
+      <span class="ticker-label">Breaking</span>
+      <div class="ticker-window">
+        <div class="ticker-track" id="tickerTrack" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="control-strip">
+      <nav class="section-nav" id="sectionNav" aria-label="Filter stories by section"></nav>
+      <div class="desk-tools">
+        <label class="search-field" for="searchStories">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 10 L15 15" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span class="sr-only">Search this edition</span>
+          <input id="searchStories" type="search" placeholder="Search the edition" autocomplete="off">
+        </label>
+        <button type="button" class="tool-button" id="clearSearch" hidden>Clear</button>
+        <button type="button" class="tool-button" id="clippingsBtn">Clippings <span id="clippingCount">0</span></button>
+        <button type="button" class="tool-button solid" id="nextEdition">Next edition <span aria-hidden="true">→</span></button>
+      </div>
+    </div>
+
+    <p class="edition-line" id="resultLine" aria-live="polite">Front page · All sections</p>
+
+    <main class="front" id="front"></main>
+
+    <footer class="paper-foot">
+      <span>The Daily Ledger · <span id="footDate">Tuesday, October 20, 2026</span></span>
+      <span>Printed in the city · All rights reserved</span>
+      <span class="edition-stamp" id="editionStamp">Edition 01</span>
+    </footer>
+  </div>
+</div>
+
+<dialog class="article-dialog" id="articleDialog" aria-labelledby="readerHeadline">
+  <div class="article-page">
+    <header class="article-toolbar">
+      <span class="reader-kicker" id="readerKicker"></span>
+      <div class="reader-tools">
+        <button type="button" class="save-clip" id="saveClipping" aria-pressed="false">Save clipping</button>
+        <button type="button" class="reader-close" id="closeReader" aria-label="Close article">Close ✕</button>
+      </div>
+    </header>
+    <div class="article-scroll">
+      <article class="article-doc">
+        <h2 id="readerHeadline"></h2>
+        <p class="article-dek" id="readerDek"></p>
+        <p class="article-byline" id="readerByline"></p>
+        <figure class="article-figure" id="readerFigure"></figure>
+        <div class="article-body" id="readerBody"></div>
+        <p class="article-end" aria-hidden="true">■</p>
+      </article>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="clippings-dialog" id="clippingsDialog" aria-labelledby="clippingsTitle">
+  <div class="clippings-page">
+    <header class="clippings-head">
+      <div>
+        <p class="clippings-eyebrow">From the reading desk</p>
+        <h2 id="clippingsTitle">Clippings</h2>
+      </div>
+      <button type="button" class="reader-close" id="closeClippings" aria-label="Close clippings">Close ✕</button>
+    </header>
+    <p class="clippings-intro">Stories you have cut out and kept. They stay on this device between editions.</p>
+    <ul class="clippings-list" id="clippingsList"></ul>
+    <p class="clippings-empty" id="clippingsEmpty" hidden>No clippings yet. Open a story and press “Save clipping”.</p>
+  </div>
+</dialog>
+
+<p class="sr-only" id="liveRegion" aria-live="polite"></p>
+<script src="app.js"></script>
+</body>
+</html>
