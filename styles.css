@@ -1258,3 +1258,21 @@ h1 {
   }
   .ticker-track { animation: none; transform: none; }
 }
+
+@media print {
+  body * { visibility: hidden; }
+  .article-reader, .article-reader * { visibility: visible; }
+  .article-reader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20mm;
+    background: white;
+    box-shadow: none;
+    border: 2px solid var(--ink);
+    color: var(--ink);
+  }
+  .reader-toolbar, .ticker, .section-nav, .tool-button { display: none; }
+  .paper { border: none; box-shadow: none; }
+}
